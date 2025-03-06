@@ -45,14 +45,14 @@ public class AuthController {
         if (!registrationDto.getPassword().equals(registrationDto.getConfirmPassword())) {
             bindingResult.rejectValue("confirmPassword", "error.registrationDto", "Passwords don't match.");
         }
-        if (userRepository.findByLogin(registrationDto.getUsername()).isPresent()) {
+        if (userRepository.findByLogin(registrationDto.getUsername().toLowerCase()).isPresent()) {
             bindingResult.rejectValue("username", "error.registrationDto", "Account with this username already exists.");
         }
         if (bindingResult.hasErrors()) {
             return "sign-up";
         }
 
-        userRepository.save(new User(null, registrationDto.getUsername(), passwordEncoder.encode(registrationDto.getPassword()), "user"));
+        userRepository.save(new User(null, registrationDto.getUsername().toLowerCase(), passwordEncoder.encode(registrationDto.getPassword()), "user"));
         return "redirect:/login";
     }
 }
