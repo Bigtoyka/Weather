@@ -1,5 +1,9 @@
-package com.devora.weather.dto;
+package com.devora.weather.dto.response;
 
+import com.devora.weather.dto.Coordinate;
+import com.devora.weather.dto.MainData;
+import com.devora.weather.dto.SysData;
+import com.devora.weather.dto.WeatherDescription;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

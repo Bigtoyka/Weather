@@ -1,25 +1,21 @@
 package com.devora.weather.security;
 
-import com.devora.weather.model.User;
 import com.devora.weather.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
+@RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
-    @Autowired
-    UserRepository userRepository;
-
+    private final UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-        Optional<User> user = userRepository.findByLogin(login.toLowerCase());
-        return user.map(CustomUserDetails::new)
+        return userRepository.findByLoginIgnoreCase(login)
+                .map(CustomUserDetails::new)
                 .orElseThrow(() -> new UsernameNotFoundException(login + " not found"));
     }
 }

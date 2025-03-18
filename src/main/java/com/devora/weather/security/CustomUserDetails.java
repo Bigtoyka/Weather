@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class CustomUserDetails implements UserDetails {
 
-    User user;
+    private final User user;
 
     public CustomUserDetails(User user) {
         this.user = user;
@@ -32,25 +32,5 @@ public class CustomUserDetails implements UserDetails {
     @Override
     public String getUsername() {
         return user.getLogin();
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
     }
 }
