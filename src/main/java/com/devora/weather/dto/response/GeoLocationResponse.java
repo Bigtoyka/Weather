@@ -1,5 +1,6 @@
-package com.devora.weather.dto;
+package com.devora.weather.dto.response;
 
+import com.devora.weather.dto.GeoLocation;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,5 +13,5 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GeoLocationResponse {
-    List<GeoLocation> geoLocations;
+    private List<GeoLocation> geoLocations;
 }

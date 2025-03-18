@@ -1,7 +1,7 @@
-package com.devora.weather.service;
+package com.devora.weather.mapper;
 
 import com.devora.weather.dto.WeatherData;
-import com.devora.weather.dto.WeatherResponse;
+import com.devora.weather.dto.response.WeatherResponse;
 import com.devora.weather.model.Location;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Slf4j
 public class Mapper {
-    WeatherData mapToWeatherData(WeatherResponse weatherResponse, Location location) {
+    public WeatherData mapToWeatherData(WeatherResponse weatherResponse, Location location) {
         WeatherData weatherData = new WeatherData();
         weatherData.setCity(location.getName());
         weatherData.setCountry(weatherResponse.getSys().getCountry());

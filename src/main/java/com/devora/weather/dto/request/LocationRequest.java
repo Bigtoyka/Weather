@@ -1,4 +1,4 @@
-package com.devora.weather.dto;
+package com.devora.weather.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
